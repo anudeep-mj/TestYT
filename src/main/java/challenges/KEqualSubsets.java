@@ -33,9 +33,9 @@ public class KEqualSubsets {
             return canPartition(0, visited, nums, targetSubsetSum, 0, subsetsLeftOver - 1);
         }
         for (int i = 0; i < visited.length; i++) {
-            if (!visited[i]) {
+            if (!visited[i] && currentSubsetSum + nums[i] <= targetSubsetSum) {
                 visited[i] = true;
-                if (canPartition(i, visited, nums, targetSubsetSum, currentSubsetSum + nums[i], subsetsLeftOver)) {
+                if (canPartition(i + 1, visited, nums, targetSubsetSum, currentSubsetSum + nums[i], subsetsLeftOver)) {
                     return true;
                 }
                 visited[i] = false;
