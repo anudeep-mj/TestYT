@@ -25,10 +25,12 @@ public class StringWithNMatchedParenthesis {
         }
 
         if (leftOutLEFTParenthesis > 0) {
+            System.out.println("leftOutLEFTParenthesis > 0 => " + stringInProgress);
             generateRecursively(result, leftOutLEFTParenthesis - 1, leftOutRIGHTParenthesis, stringInProgress + "(");
         }
 
         if (leftOutLEFTParenthesis < leftOutRIGHTParenthesis) {
+            System.out.println("leftOutLEFTParenthesis < leftOutRIGHTParenthesis => " + stringInProgress);
             generateRecursively(result, leftOutLEFTParenthesis, leftOutRIGHTParenthesis - 1, stringInProgress + ")");
         }
     }
