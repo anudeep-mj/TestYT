@@ -30,6 +30,9 @@ public class JumpFromIdx {
         return canJumpRecursive(nums, 0);
     }
 
+    //Time complexity : O(2^n). There are 2^n (upper bound) ways of jumping from the first position to the last,
+    // where n is the length of array nums. For a complete proof, please refer to Appendix A. You could use DP to make it efficient.
+    //Have an boolean array which denotes if the index is a gud or a bad one beforehand
     private static boolean canJumpRecursive(int[] nums, int i) {
         if (i == nums.length - 1) {
             return true;
