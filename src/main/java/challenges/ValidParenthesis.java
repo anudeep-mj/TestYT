@@ -23,6 +23,7 @@ public class ValidParenthesis {
         return stack.size() != 0;
     }
 
+    //Should have used a map here. wtf
     public boolean isValidOpen(Character fromStack, Character input) {
         if (fromStack == '(' && input == ')') {
             return true;
