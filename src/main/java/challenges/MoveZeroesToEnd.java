@@ -27,6 +27,27 @@ public class MoveZeroesToEnd {
         return arr;
     }
 
+    public void moveZeroes(int[] nums) {
+        int numOfZeroes = 0;
+
+        for(int i = 0; i < nums.length; i++) {
+            int num = nums[i];
+            if(num == 0) {
+                numOfZeroes++;
+            } else {
+                nums[i - numOfZeroes] = nums[i];
+            }
+        }
+
+        for (int i = nums.length - numOfZeroes; i < nums.length; i++) {
+            nums[i] = 0;
+        }
+    }
+
+    private void processNumIfNecessary(int[] nums, int i, int numOfZeroes) {
+        nums[i - numOfZeroes] = nums[i];
+    }
+
     static int[] exchangeIndexes(int[] arr, int i, int j) {
         arr[i] = arr[j];
         arr[j] = 0;
