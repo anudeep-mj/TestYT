@@ -24,14 +24,17 @@ import java.util.Queue;
  * Output: 3
  */
 public class NumOfIslands {
-    public int numIslands(char[][] grid) {
+    public static int numIslands(char[][] grid) {
         int numRows = grid.length;
+        if(numRows == 0) {
+            return 0;
+        }
         int numCols = grid[0].length;
         int numOfIslands = 0;
 
         for (int row = 0; row < numRows; row++) {
             for (int col = 0; col < numCols; col++) {
-                if (grid[row][col] == 1) {
+                if (grid[row][col] == '1') {
                     numOfIslands++;
                     fillUpAdjacentCells(grid, row, col);
                 }
@@ -41,15 +44,24 @@ public class NumOfIslands {
         return numOfIslands;
     }
 
-    private void fillUpAdjacentCells(char[][] grid, int row, int col) {
-        if (row < 0 || row > grid.length - 1 || col < 0 || col > grid[0].length - 1 || grid[row][col] == 0) {
+    private static void fillUpAdjacentCells(char[][] grid, int row, int col) {
+        if (row < 0 || row > grid.length - 1 || col < 0 || col > grid[0].length - 1 || grid[row][col] == '0') {
             return;
         }
 
-        grid[row][col] = 0;
+        grid[row][col] = '0';
         fillUpAdjacentCells(grid, row + 1, col);
         fillUpAdjacentCells(grid, row - 1, col);
         fillUpAdjacentCells(grid, row, col + 1);
         fillUpAdjacentCells(grid, row, col - 1);
+    }
+
+    public static void main(String[] args) {
+        numIslands(new char[][]{
+                {'1','1','0','0','0'},
+                {'1','1','0','0','0'},
+                {'0','0','1','0','0'},
+                {'0','0','0','1','1'}
+        });
     }
 }
