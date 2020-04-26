@@ -13,15 +13,15 @@ public class ValidateBinarySearchTree {
         }
 
         int val = root.getVal();
-        if (val < lower) {
+        if (lower != null && val <= lower) {
             return false;
         }
-        if (val > upper) {
+        if (upper != null && val >= upper) {
             return false;
         }
 
-        if (!validateBSTRecursive(root.getLeft(), val, upper)) return false;
-        if (!validateBSTRecursive(root.getRight(), lower, val)) return false;
+        if (!validateBSTRecursive(root.getLeft(), lower, val)) return false;
+        if (!validateBSTRecursive(root.getRight(), val, upper)) return false;
         return true;
     }
 }
