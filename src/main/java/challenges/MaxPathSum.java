@@ -31,21 +31,23 @@ import utils.TreeNode;
  * Output: 42
  */
 public class MaxPathSum {
+    int maxValueResult = Integer.MIN_VALUE;
+
     public int maxPathSum(TreeNode root) {
-        int maxValueResult = Integer.MIN_VALUE;
-        getMaxPathSum(root, maxValueResult);
+        getMaxPathSum(root);
         return maxValueResult;
     }
 
-    private int getMaxPathSum(TreeNode root, int maxValueResult) {
+    private int getMaxPathSum(TreeNode root) {
         if (root == null) {
             return 0;
         }
 
-        int left = getMaxPathSum(root.getLeft(), maxValueResult);
-        int right = getMaxPathSum(root.getRight(), maxValueResult);
-
+        int left = Math.max(0, getMaxPathSum(root.getLeft());
+        int right = Math.max(0, getMaxPathSum(root.getRight());
         maxValueResult = Math.max(maxValueResult, left + right + root.getVal());
-        return maxValueResult;
+
+        //we dont return maxValueResult in this result tree because what we want is not the sum of both nodes below. because that part is take care aboe in like 48
+        return Math.max(left, right) + root.getVal();
     }
 }
