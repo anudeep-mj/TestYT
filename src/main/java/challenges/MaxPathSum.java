@@ -43,8 +43,8 @@ public class MaxPathSum {
             return 0;
         }
 
-        int left = Math.max(0, getMaxPathSum(root.getLeft());
-        int right = Math.max(0, getMaxPathSum(root.getRight());
+        int left = Math.max(0, getMaxPathSum(root.getLeft()));
+        int right = Math.max(0, getMaxPathSum(root.getRight()));
         maxValueResult = Math.max(maxValueResult, left + right + root.getVal());
 
         //we dont return maxValueResult in this result tree because what we want is not the sum of both nodes below. because that part is take care aboe in like 48
