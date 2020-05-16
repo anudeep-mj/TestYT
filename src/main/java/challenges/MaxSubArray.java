@@ -27,6 +27,21 @@ public class MaxSubArray {
         return maxSum;
     }
 
+    public static int maxSubArrayKadane(int[] num) {
+        int maxSum = num[0];
+        for(int i = 1; i < num.length; i++) {
+            int numAtIdx = num[i];
+            if(numAtIdx < num[i] + num[i-1]) {
+                num[i] = num[i] + num[i-1];
+            } else {
+                num[i] = numAtIdx;
+            }
+
+            maxSum = Math.max(maxSum, num[i]);
+        }
+        return maxSum;
+    }
+
     public static void main(String[] args) {
 
     }
