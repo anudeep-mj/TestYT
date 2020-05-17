@@ -17,16 +17,16 @@ import java.util.HashMap;
 public class ValidPalindromeII {
     public static boolean validPalindrome(String s) {
 
-        if(isPalindrome(s, 0, s.length()-1)) {
-            return true;
-        } else {
+        //if(isPalindrome(s, 0, s.length()-1)) {
+        //    return true;
+        //} else {
             for(int left = 0; left < s.length()/2; left++) {
                 int right = s.length()-1-left;
                 if(s.charAt(left) != s.charAt(right)) {
                     return isPalindrome(s, left+1, right) || isPalindrome(s, left, right-1);
                 }
             }
-        }
+        //}
 
         return true;
     }
