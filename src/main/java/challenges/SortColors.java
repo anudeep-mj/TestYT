@@ -10,7 +10,36 @@ package challenges;
  * Output: [0,0,1,1,2,2]
  */
 public class SortColors {
-    public void sortColors(int[] nums) {
+    public static void sortColors(int[] nums) {
+        if (nums.length < 2) {
+            return;
+        }
+        int zidx = 0;
+        int tidx = nums.length-1;
 
+        int current = 0;
+
+        while (current <= tidx) {
+            if (nums[current] == 0) {
+                swap(nums, current, zidx);
+                zidx++;
+                current++;
+            } else if (nums[current] == 2) {
+                swap(nums, current, tidx);
+                tidx--;
+            } else {
+                current++;
+            }
+        }
+    }
+
+    private static void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+
+    public static void main(String[] args) {
+        sortColors(new int[]{2,0,2,1,1,0});
     }
 }
