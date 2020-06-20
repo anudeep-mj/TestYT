@@ -50,5 +50,7 @@ public class RandomizedSet {
         int max = list.size();
         int randomInInterval = new Random().nextInt((max - min) + 1) + min;
         return list.get(randomInInterval);
+
+        //since the min is always 0 here, you can just use new Random().nextInt(list.size());
     }
 }
