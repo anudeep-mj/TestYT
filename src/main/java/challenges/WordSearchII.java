@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 class WordSearchII {
-    public List<String> findWords(char[][] board, String[] words) {
+    public static List<String> findWords(char[][] board, String[] words) {
         TrieNode root = buildTrie(words);
         List<String> res = new ArrayList<>();
 
@@ -39,7 +39,7 @@ class WordSearchII {
         return res;
     }
 
-    public void dfs(int row, int col, char[][] board, TrieNode node, List<String> res) {
+    public static void dfs(int row, int col, char[][] board, TrieNode node, List<String> res) {
         char c = board[row][col];
         if(c == '#' || node.children[c - 'a'] == null) {
             return;
@@ -51,6 +51,7 @@ class WordSearchII {
             node.word = null;
         }
 
+        board[row][col] = '#';
 
         if(row > 0) {
             dfs(row-1, col, board, node, res);
@@ -67,7 +68,7 @@ class WordSearchII {
         board[row][col] = c;
     }
 
-    TrieNode buildTrie(String[] words) {
+    static TrieNode buildTrie(String[] words) {
         TrieNode root = new TrieNode();
         for(String word : words) {
             TrieNode p = root;
@@ -81,5 +82,9 @@ class WordSearchII {
             p.word = word;
         }
         return root;
+    }
+
+    public static void main(String[] args) {
+
     }
 }
