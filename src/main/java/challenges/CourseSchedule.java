@@ -36,7 +36,7 @@ public class CourseSchedule {
         //     System.out.print(i);
         // }
 
-        //load the course which dont
+        //load the course which dont have any prereqs
         Queue<Integer> q = new LinkedList<>();
         for(int i = 0; i<numCourses; i++) {
             if(prereqArr[i] == 0) {
