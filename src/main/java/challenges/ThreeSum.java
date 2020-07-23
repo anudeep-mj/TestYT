@@ -10,13 +10,38 @@ Given array nums = [-1, 0, 1, 2, -1, -4], A solution set is:
   [-1, -1, 2]
 ]
  */
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ThreeSum {
+
+    HashSet<List<Integer>> result;
+
+    public List<List<Integer>> threeSumBF(int[] nums) {
+        Arrays.sort(nums);
+        result = new HashSet<>();
+        int numsSz = nums.length;
+        for(int i = 0; i < nums.length; i++) {
+            get2Sum(nums[i], 0 - nums[i], Arrays.copyOfRange(nums, i+1, numsSz));
+        }
+        return new ArrayList<>(result);
+    }
+
+    private void get2Sum(int first, int sumToEqual, int[] subNums) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for(int idx = 0; idx < subNums.length; idx++) {
+            int num = subNums[idx];
+            if(map.containsKey(sumToEqual - num)) {
+                List<Integer> list = new ArrayList<>();
+                list.add(first);
+                list.add(sumToEqual - num);
+                list.add(num);
+                result.add(list);
+            } else {
+                map.put(num, idx);
+            }
+        }
+    }
+
     public static List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
         if (nums.length == 0) {
