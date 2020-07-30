@@ -24,6 +24,7 @@ public class MeetingRoomsIIRoomsRequired {
 
         int meetingRooms = 0;
 
+        //could have just used something like: PriorityQueue<MeetingRooms.Interval> pq = new PriorityQueue<>((a, b) -> a.end - b.end);
         PriorityQueue<MeetingRooms.Interval> intervalPriorityQueue = new PriorityQueue<>(new Comparator<MeetingRooms.Interval>() {
             @Override
             public int compare(MeetingRooms.Interval interval1, MeetingRooms.Interval interval2) {
