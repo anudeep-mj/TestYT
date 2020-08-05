@@ -8,9 +8,65 @@ package challenges;
  */
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class MinWindowSubstring {
+
+    static Map<Character, Integer> freqMap;
+    static Set<Character> charSet;
+    static int resultSize = Integer.MAX_VALUE;
+    static String result = "";
+
+    static String getShortestUniqueSubstring(char[] arr, String str) {
+        freqMap = new HashMap<>();
+        charSet = new HashSet<>();
+        for(char c : arr) {
+            charSet.add(c);
+        }
+
+        int left = 0;
+        int right = 0;
+
+
+        while(right < str.length()) {
+            char c = str.charAt(right++);
+            if(charSet.contains(c)) {
+                freqMap.put(c, freqMap.getOrDefault(c, 0) + 1);
+            }
+
+            int mapSize = freqMap.size();
+
+            if(mapSize == arr.length) {
+
+                if(right - left + 1 < resultSize) {
+                    resultSize = right - left;
+                    result = str.substring(left, right);
+                }
+
+
+                while(freqMap.size() >= arr.length) {
+                    char cLeft = str.charAt(left);
+                    if(freqMap.containsKey(cLeft)) {
+                        freqMap.put(cLeft, freqMap.get(cLeft) - 1);
+                        if(freqMap.get(cLeft) == 0) {
+                            freqMap.remove(cLeft);
+                        }
+                    }
+                    left++;
+                }
+            }
+        }
+
+        return result;
+    }
+
+    public static void main(String[] args) {
+        getShortestUniqueSubstring(new char[]{'x', 'y', 'z'}, "xxyzz");
+    }
+
+
     public Integer minWindow(String s, String t) {
         if (s.length() < t.length()) {
             return 0;

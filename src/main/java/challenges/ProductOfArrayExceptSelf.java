@@ -10,8 +10,30 @@ package challenges;
  * Note: Please solve it without division and in O(n).
  * Follow up:
  * Could you solve it with constant space complexity? (The output array does not count as extra space for the purpose of space complexity analysis.)
+ *
  */
 public class ProductOfArrayExceptSelf {
+
+    public static int[] produ(int[] nums) {
+        //[7,2,3,4]
+        int leftProduct = 1;
+        int[] dp = new int[nums.length];
+
+        //[1,7,14,42]
+        for (int i = 0; i < nums.length; i++) {
+            dp[i] = leftProduct;
+            leftProduct = leftProduct * nums[i];
+        }
+
+        int rightProduct = 1;
+        //[, 14*4, 42] rp = 1 * 4
+        for (int i = nums.length - 1; i >= 0; i--) {
+            dp[i] = dp[i] * rightProduct;
+            rightProduct = nums[i] *  rightProduct;
+        }
+
+        return dp;
+    }
 
     public static int[] productExceptSelfConstantSpaceComplexity(int[] nums) {
         int[] result = new int[nums.length];
