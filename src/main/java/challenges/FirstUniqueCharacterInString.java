@@ -30,6 +30,8 @@ public class FirstUniqueCharacterInString {
             idx++;
         }
 
+        // what is this ? why in gods name do you need this shit.
+        // just have a freqmap and then iterate over the array from begin and return the damn index value. wtf
         while(!q.isEmpty()) {
             qObj obj = q.poll();
             if(freqMap.get(obj.val) == 1) {
