@@ -15,6 +15,7 @@ public class MeetingRoomsIIRoomsRequired {
             return 0;
         }
 
+        //could have done Arrays.sort(intervals, (interval1, interval2) -> interval1.start - interval2.start);
         Arrays.sort(intervals, new Comparator<MeetingRooms.Interval>() {
             @Override
             public int compare(MeetingRooms.Interval interval1, MeetingRooms.Interval interval2) {
