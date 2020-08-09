@@ -1,8 +1,8 @@
 package utils;
 
 public class Interval {
-    int start;
-    int end;
+    public int start;
+    public int end;
 
     public Interval(int[] interval) {
         start = interval[0];
