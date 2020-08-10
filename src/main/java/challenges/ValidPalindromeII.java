@@ -15,31 +15,26 @@ import java.util.HashMap;
  * Explanation: You could delete the character 'c'.
  */
 public class ValidPalindromeII {
-    public static boolean validPalindrome(String s) {
-
-        //if(isPalindrome(s, 0, s.length()-1)) {
-        //    return true;
-        //} else {
-            for(int left = 0; left < s.length()/2; left++) {
-                int right = s.length()-1-left;
-                if(s.charAt(left) != s.charAt(right)) {
-                    return isPalindrome(s, left+1, right) || isPalindrome(s, left, right-1);
-                }
+    public static boolean validPalindrome (String s) {
+        if (s == null) {
+            return false;
+        }
+        for (int left = 0; left < s.length() / 2; left++) {
+            int right = s.length() - 1 - left;
+            if (s.charAt(left) != s.charAt(right)) {
+                return isPalindrome(s, left + 1, right) || isPalindrome(s, left, right - 1);
             }
-        //}
+        }
 
         return true;
     }
 
-
-    public static boolean isPalindrome(String s, int left, int right) {
-        //for(int i = left; i < left + (right-left)/2; i++) {
-        //if(s.charAt(i) != s.charAt())
-        //}
-        while(left <= right) {
-            if(s.charAt(left) != s.charAt(right)) {
+    public static boolean isPalindrome (String s, int left, int right) {
+        while (left <= right) {
+            if (s.charAt(left) != s.charAt(right)) {
                 return false;
-            } else {
+            }
+            else {
                 left++;
                 right--;
             }

@@ -1,5 +1,7 @@
 package challenges;
 
+import java.util.Arrays;
+
 /**
  * A robot is located at the top-left corner of a m x n grid (marked 'Start' in the diagram below).
  * The robot can only move either down or right at any point in time. The robot is trying to reach the bottom-right corner of the grid
@@ -19,8 +21,9 @@ package challenges;
 public class UniquePaths {
     public int uniquePaths(int m, int n) {
         int[][] mnDP = new int[m][n];
-        for (int i = 0; i < m; i++) {
-            mnDP[i][0] = 1;
+
+        for(int[] arr : mnDP) {
+            Arrays.fill(arr, 1);
         }
 
         //to arrive at a point(i, j) -> it means, you can come from top or left.
