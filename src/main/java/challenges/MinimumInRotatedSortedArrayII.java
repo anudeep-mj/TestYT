@@ -37,12 +37,14 @@ public class MinimumInRotatedSortedArrayII {
             if (nums[mid] > nums[right]) {
                 left = mid + 1;
             } else if (nums[mid] < nums[right]) {
+                //this is a place where you might make mistakes..
                 right = mid;
             } else {
                 right--;
             }
         }
 
+        //this one too...
         return nums[left];
     }
 
