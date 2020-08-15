@@ -69,6 +69,8 @@ public class SerializeDeserializeBinaryTree {
     // Decodes your encoded data to tree from bfs serialize
     public TreeNode deserialize(String data) {
         String[] nodes = data.split(",");
+        //even though you are using dfs to serialize and dfs to deserialize,
+        // we can use a queue to pop off the elements one by one and there is no need to keep some kind of index..
         Queue<String> queue = new LinkedList<>();
         queue.addAll(Arrays.asList(nodes));
         deserializeHelperFromDFS(queue);

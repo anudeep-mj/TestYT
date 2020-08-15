@@ -70,7 +70,7 @@ public class LRUCache
             Node nextToN = n.next;
 
             prev.next = nextToN;
-            prev.prev = n;
+            //prev.prev = n;
             nextToN.prev = prev;
 
             n.prev = this.head;

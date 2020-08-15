@@ -49,4 +49,37 @@ public class PhoneLetterCombinations {
         PhoneLetterCombinations phoneLetterCombinations = new PhoneLetterCombinations();
         phoneLetterCombinations.letterCombinations("23");
     }
+
+
+    //second time
+    List<String>result;
+    public List<String> letterCombinations2(String digits) {
+        result = new ArrayList<>();
+        if(digits == null || digits.length() == 0) {
+            return result;
+        }
+
+        for(int i = 0; i < digits.length(); i++) {
+            letterComboCreator(digits, i, "");
+        }
+
+        return result;
+    }
+
+    private void letterComboCreator(String digits, int i, String combo) {
+        if(combo.length() == digits.length()) {
+            result.add(combo);
+            return;
+        }
+        if(i >= digits.length()) {
+            return;
+        }
+
+        char digitAtIndex = digits.charAt(i);
+        String combinationForDigit = phone.get("" + digitAtIndex);
+
+        for(int idx = 0; idx < combinationForDigit.length(); idx++) {
+            letterComboCreator(digits, i + 1, combo + combinationForDigit.charAt(idx));
+        }
+    }
 }
