@@ -30,8 +30,6 @@ public class PopulatingNextRightPointersInEachNode
     /*
     One approach is to use level order traversal.
     If you have a List<List<Node>> finalList of nodes by level, then you just need to traverse through the list and point the left node to its next.
-
-
      */
     public Node connect (Node root)
     {

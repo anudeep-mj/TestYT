@@ -19,7 +19,7 @@ public class AddTwoNumbersAsLinkedList {
         ListNode res = new ListNode(-1);
         ListNode tempHead = res;
 
-        while (l1 != null && l2 != null) {
+        while (l1 != null || l2 != null) {
             int l1val = 0;
             int l2val = 0;
 
