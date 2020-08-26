@@ -48,10 +48,10 @@ public class DistanceBetweenNodesInBST
     {
         while (true) {
             if (root.val > node1 && root.val > node2) {
-                root = root.right;
+                root = root.left;
             }
             else if (root.val < node1 && root.val < node2) {
-                root = root.left;
+                root = root.right;
             }
             else {
                 return root;
