@@ -38,4 +38,31 @@ public class TrappingRainWater {
         }
         return result;
     }
+
+    public int trap2(int[] height) {
+        if(height.length == 0) {
+            return 0;
+        }
+
+        int result = 0;
+
+        int[] mxArr = new int[height.length];
+
+        int mxLeft = 0;
+        for (int i = 1; i < height.length; i++) {
+            mxLeft = Math.max(mxArr[i-1], mxLeft);
+            mxArr[i] = mxLeft;
+        }
+
+        int mxRt = 0;
+        for (int i = height.length - 2; i >= 0; i--) {
+            mxRt = Math.max(mxRt, height[i + 1]);
+            int min = Math.min(mxArr[i], mxRt);
+            if (min - height[i] > 0) {
+                result = result + (min - height[i]);
+            }
+        }
+
+        return result;
+    }
 }
