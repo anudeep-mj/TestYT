@@ -25,10 +25,13 @@ import java.util.Stack;
  */
 public class ValidParenthesisStringWithStarWildCard {
 
+    public static boolean checkValidString(String s) {
+        return false;
+    }
 
 
     //wrong soln
-    public static boolean checkValidString(String s) {
+    public static boolean checkValidStringWrong(String s) {
         Stack<Character> stack = new Stack<>();
         int starCounter = 0;
         int extraCloses = 0;

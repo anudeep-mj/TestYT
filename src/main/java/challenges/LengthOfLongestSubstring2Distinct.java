@@ -30,6 +30,9 @@ public class LengthOfLongestSubstring2Distinct {
                 char charToRemove = input.charAt(start);
                 freqMap.put(charToRemove, freqMap.get(charToRemove) - 1);
                 start++;
+                if (freqMap.get(charToRemove) == 0) {
+                    freqMap.remove(charToRemove);
+                }
             }
         }
         return maxLen;
