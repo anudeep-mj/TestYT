@@ -4,6 +4,7 @@ package challenges;
 import java.util.NavigableMap;
 import java.util.Random;
 import java.util.TreeMap;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Given an array w of positive integers, where w[i] describes the weight of index i, write a function pickIndex which randomly picks an index in proportion to its weight.
@@ -52,7 +53,10 @@ public class RandomPickWithWeight {
     }
 
     public int pickIndex() {
+        //new Random is not thread safe.
         double value = random.nextDouble() * total;
+
+        // better use: ThreadLocalRandom.current().nextDouble(0,  value); https://stackoverflow.com/questions/23396033/random-over-threadlocalrandom
         return navigableMap.higherEntry(value).getValue();
     }
 

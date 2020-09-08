@@ -32,6 +32,8 @@ public class ReorganizeString
         maxHeap.addAll(freqMap.keySet());
 
         StringBuilder stringBuilder = new StringBuilder();
+
+        //the trick here is not heap, but the fact that the heap has to have atleast two elements. basically the heap is for sewing.
         while (maxHeap.size() > 1) {
             char max = maxHeap.remove();
             char next = maxHeap.remove();
@@ -62,6 +64,6 @@ public class ReorganizeString
 
     public static void main (String[] args)
     {
-        reorganizeString("aaabbbcc");
+        reorganizeString("aaabbbc");
     }
 }

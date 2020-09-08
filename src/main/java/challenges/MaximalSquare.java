@@ -26,6 +26,7 @@ public class MaximalSquare {
         for (int i = 1; i <= matrix.length; i++) {
             for (int j = 1; j <= matrix[0].length; j++) {
                 if (matrix[i-1][j-1] != '0') {
+                    //this is basically get min of all three directions above, left and diagonal left
                     int temp = Math.min(cacheMat[i-1][j], cacheMat[i][j-1]);
                     cacheMat[i][j] = Math.min(temp, cacheMat[i-1][j-1]) + 1;
                     max = Math.max(max, cacheMat[i][j]);
