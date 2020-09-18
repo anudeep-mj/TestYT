@@ -56,7 +56,7 @@ public class RandomPickWithWeight {
         //new Random is not thread safe.
         double value = random.nextDouble() * total;
 
-        // better use: ThreadLocalRandom.current().nextDouble(0,  value); https://stackoverflow.com/questions/23396033/random-over-threadlocalrandom
+        // better use: ThreadLocalRandom.current().nextDouble(0,  total); https://stackoverflow.com/questions/23396033/random-over-threadlocalrandom
         return navigableMap.higherEntry(value).getValue();
     }
 
