@@ -24,8 +24,25 @@ package challenges;
 
 import java.util.Stack;
 
-public class ValidateStackSequences {
-    public static boolean validateStackSequences(int[] pushed, int[] popped) {
+public class ValidateStackSequences
+{
+    public static boolean validateStackSequencesEff (int[] pushed, int[] popped)
+    {
+        int i = 0;
+        int j = 0;
+        for (int p : pushed) {
+            pushed[i++] = p;
+            while (i > 0 && pushed[i - 1] == popped[j]) {
+                i--;
+                j++;
+            }
+        }
+        return i == 0;
+    }
+
+
+    public static boolean validateStackSequences (int[] pushed, int[] popped)
+    {
         int poppedIdx = 0;
         Stack<Integer> s = new Stack<>();
 
@@ -43,7 +60,23 @@ public class ValidateStackSequences {
         return s.isEmpty();
     }
 
-    public static void main(String[] args) {
-        validateStackSequences(new int[]{1, 2, 3, 4, 5}, new int[]{4, 5, 3, 2, 1});
+    public boolean validateStackSequences2 (int[] pushed, int[] popped)
+    {
+        Stack<Integer> stk = new Stack<>();
+        int popIdx = 0;
+        for (int i : pushed) {
+            stk.push(i);
+            while (!stk.isEmpty() && stk.peek() == popped[popIdx]) {
+                stk.pop();
+                popIdx++;
+            }
+        }
+
+        return stk.isEmpty();
+    }
+
+    public static void main (String[] args)
+    {
+        validateStackSequences(new int[] { 1, 2, 3, 4, 5 }, new int[] { 4, 5, 3, 2, 1 });
     }
 }
