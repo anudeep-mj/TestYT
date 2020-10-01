@@ -20,10 +20,8 @@ import java.util.PriorityQueue;
 public class MergeKSortedLists {
     public ListNode mergeKLists(ListNode[] lists) {
         int totalLists = lists.length;
-        int nextNullCount = 0;
-        PriorityQueue<ListNode> listNodePriorityQueue = new PriorityQueue<>(new Comparator<ListNode>() {
-            @Override
-            public int compare(ListNode listNode1, ListNode listNode2) {
+        PriorityQueue<ListNode> listNodePriorityQueue = new PriorityQueue<>(
+            (listNode1, listNode2) -> {
                 if (listNode1.val > listNode2.val) {
                     return 1;
                 } else if (listNode1.val == listNode2.val) {
@@ -31,8 +29,7 @@ public class MergeKSortedLists {
                 } else {
                     return -1;
                 }
-            }
-        });
+            });
 
         for (int i = 0; i < totalLists; i++) {
             ListNode listNode = lists[i];

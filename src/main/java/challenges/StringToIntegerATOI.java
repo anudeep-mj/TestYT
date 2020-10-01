@@ -54,7 +54,7 @@ public class StringToIntegerATOI
         if (str.length() == 0) {
             return 0;
         }
-        long result = 1;
+        long result = 0;
         int sign = 1;
         if (str.charAt(idx) == '-') {
             sign = -1;

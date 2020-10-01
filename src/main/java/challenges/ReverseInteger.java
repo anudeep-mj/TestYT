@@ -6,7 +6,7 @@ public class ReverseInteger {
             return number;
         }
 
-        Integer reversedNumber = 0;
+        int reversedNumber = 0;
 
         //2345
         while (number != 0) {
@@ -23,6 +23,23 @@ public class ReverseInteger {
         }
 
         return reversedNumber;
+    }
+
+
+    public static int revInt(int num) {
+        int revNum = 0;
+        while (num != 0) {
+            // 563 % 10 = 3
+            int mod = num % 10;
+            if(mod != 0) {
+                revNum = revNum * 10 + mod;
+            } else {
+                revNum = revNum * 10;
+            }
+            num = num / 10;
+        }
+
+        return revNum;
     }
 
     public static void main(String[] args) {
