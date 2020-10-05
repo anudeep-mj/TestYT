@@ -62,26 +62,32 @@ import java.util.*;
  * informTime[i] == 0 if employee i has no subordinates.
  * It is guaranteed that all the employees can be informed.
  */
-public class TimeNeededToInformAllEmployees {
+public class TimeNeededToInformAllEmployees
+{
 
-    public static int numOfMinutes2(int n, int headID, int[] manager, int[] informTime) {
+    public static int numOfMinutes2 (int n, int headID, int[] manager, int[] informTime)
+    {
         List<Integer>[] graph = new List[n];
-        for (int i = 0; i < n; i++) graph[i] = new ArrayList<>();
-        for (int i = 0; i < n; i++) if (manager[i] != -1) graph[manager[i]].add(i);
+        for (int i = 0; i < n; i++)
+            graph[i] = new ArrayList<>();
+        for (int i = 0; i < n; i++)
+            if (manager[i] != -1)
+                graph[manager[i]].add(i);
         Queue<int[]> q = new LinkedList<>(); // Since it's a tree, we don't need `visited` array
-        q.offer(new int[]{headID, 0});
+        q.offer(new int[] { headID, 0 });
         int ans = 0;
         while (!q.isEmpty()) {
             int[] top = q.poll();
             int u = top[0], w = top[1];
             ans = Math.max(w, ans);
-            for (int v : graph[u]) q.offer(new int[]{v, w + informTime[u]});
+            for (int v : graph[u])
+                q.offer(new int[] { v, w + informTime[u] });
         }
         return ans;
     }
 
-
-    public static int numOfMinutes(int n, int headID, int[] manager, int[] informTime) {
+    public static int numOfMinutes (int n, int headID, int[] manager, int[] informTime)
+    {
         Map<Integer, List<Integer>> map = new HashMap<>();
         for (int i = 0; i < manager.length; i++) {
             List<Integer> list = new ArrayList<>();
@@ -94,7 +100,7 @@ public class TimeNeededToInformAllEmployees {
         }
 
         Queue<int[]> q = new LinkedList<>();
-        q.offer(new int[]{headID, 0});
+        q.offer(new int[] { headID, 0 });
 
         int maxAtLevel = 0;
         while (!q.isEmpty()) {
@@ -108,12 +114,14 @@ public class TimeNeededToInformAllEmployees {
             List<Integer> employeesUnder = map.get(managerAtLevel);
             if (employeesUnder != null) {
                 for (int i : employeesUnder) {
-                    q.offer(new int[]{i, cost + informTime[managerAtLevel]});
+                    // core logic below..
+                    q.offer(new int[] { i, cost + informTime[managerAtLevel] });
                 }
             }
         }
         return maxAtLevel;
     }
+
     /*
     fails because we didnt consider the following case:
                                   ---> 1(213) -> 7(0)
@@ -127,7 +135,8 @@ public class TimeNeededToInformAllEmployees {
 
      975 > (261 + 170), 8(261) -> 5(170), so no need to add 170.
     */
-    public static int numOfMinutesWrongApproach(int n, int headID, int[] manager, int[] informTime) {
+    public static int numOfMinutesWrongApproach (int n, int headID, int[] manager, int[] informTime)
+    {
         Map<Integer, List<Integer>> map = new HashMap<>();
         for (int i = 0; i < manager.length; i++) {
             List<Integer> list = new ArrayList<>();
@@ -167,8 +176,10 @@ public class TimeNeededToInformAllEmployees {
         return result;
     }
 
-    public static void main(String[] args) {
-        numOfMinutes(11, 4, new int[]{5,9,6,10,-1,8,9,1,9,3,4}, new int[]{0,213,0,253,686,170,975,0,261,309,337});
+    public static void main (String[] args)
+    {
+        numOfMinutes(11, 4, new int[] { 5, 9, 6, 10, -1, 8, 9, 1, 9, 3, 4 },
+            new int[] { 0, 213, 0, 253, 686, 170, 975, 0, 261, 309, 337 });
     }
 }
 
