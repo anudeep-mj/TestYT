@@ -34,4 +34,15 @@ public class SwapPairs
 
         return head;
     }
+
+    public ListNode swapPairsRecursive(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+
+        ListNode temp = head.next;
+        head.next = swapPairsRecursive(head.next.next);
+        temp.next = head;
+        return temp;
+    }
 }

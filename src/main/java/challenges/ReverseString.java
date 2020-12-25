@@ -25,4 +25,17 @@ public class ReverseString {
             j--;
         }
     }
+
+    public void reverseStringRecursive(char[] s) {
+        helper(s, 0);
+    }
+
+    private void helper(char[] s, int i) {
+        if(i >= s.length) {
+            return;
+        }
+
+        helper(s, i + 1);
+        System.out.println(s[i]);
+    }
 }
