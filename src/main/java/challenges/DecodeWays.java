@@ -35,7 +35,7 @@ public class DecodeWays
         for (int i = 2; i <= s.length(); i++) {
             int oneDigit = Integer.valueOf(s.substring(i-1, i));
             int twoDigits = Integer.valueOf(s.substring(i-2, i));
-            if (oneDigit > 1) {
+            if (oneDigit >= 1) {
                 dp[i] = dp[i] + dp[i-1];
             }
             if (twoDigits > 9 && twoDigits < 27) {
@@ -46,7 +46,31 @@ public class DecodeWays
         return dp[s.length()];
     }
 
+
+    public static int numDecodingsRecursive (String s) {
+        return s.length() == 0 ? 0 : decodingRecHelper(0, s);
+    }
+
+    private static int decodingRecHelper(int idx, String s) {
+        int len = s.length();
+        if (idx == len) {
+            return 1;
+        }
+
+        if (s.charAt(idx) == '0') {
+            return 0;
+        }
+
+        int res = decodingRecHelper(idx + 1, s);
+
+        if (idx < len - 1 && (s.charAt(idx) == '1' || (s.charAt(idx) == '2' && s.charAt(idx + 1) < '7'))) {
+            res = res + decodingRecHelper(idx + 2, s);
+        }
+
+        return res;
+    }
+
     public static void main(String[] args) {
-        numDecodings("123");
+        numDecodingsRecursive("123");
     }
 }
