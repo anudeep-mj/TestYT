@@ -71,4 +71,42 @@ public class FindAndReplaceInString
         findReplaceString("abcd", new int[] { 0, 2 }, new String[] { "a", "cd" },
             new String[] { "eee", "fff" });
     }
+
+
+    //secondtry
+
+    public static String findReplaceString2(String S, int[] indexes, String[] sources, String[] targets) {
+        boolean[] toBeReplaced = new boolean[sources.length];
+
+        for(int i = 0; i < sources.length; i++) {
+            String toBeReplacedStr = sources[i];
+            int indexToBeReplacedAt = indexes[i];
+
+            int len = toBeReplacedStr.length();
+            if(S.indexOf(toBeReplacedStr) == -1) {
+                toBeReplaced[i] = false;
+            } else {
+                String strAtIndexToBeReplacedAt = S.substring(indexToBeReplacedAt, indexToBeReplacedAt + len);
+                if(strAtIndexToBeReplacedAt.equals(toBeReplacedStr)) {
+                    toBeReplaced[i] = true;
+                } else {
+                    toBeReplaced[i] = false;
+                }
+            }
+        }
+
+        int startIdx = 0;
+        StringBuilder sb = new StringBuilder();
+
+        for(int i = 0; i < sources.length; i++) {
+            if(toBeReplaced[i]) {
+                int idx = indexes[i];
+                sb.append(S.substring(startIdx, idx));
+                sb.append(targets[i]);
+                startIdx = i + sources[i].length();
+            }
+        }
+
+        return sb.toString();
+    }
 }
