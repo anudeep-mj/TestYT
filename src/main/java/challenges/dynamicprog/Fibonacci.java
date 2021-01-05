@@ -20,6 +20,23 @@ public class Fibonacci {
         return cache[N];
     }
 
+    //without memoization
+    public int fib(int n) {
+        return fibhelper(n);
+    }
+
+    private int fibhelper(int n) {
+        if (n == 0) {
+            return 0;
+        }
+
+        if (n == 1) {
+            return 1;
+        }
+
+        return fibhelper(n - 1) + fibhelper(n - 2);
+    }
+
     public static void main(String[] args) {
         getFibonacciAtIndex(5);
     }
